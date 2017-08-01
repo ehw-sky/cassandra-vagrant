@@ -1,4 +1,5 @@
 include cassandra::datastax_repo
+include cassandra::java
 
 node /^cassandra-node[012]$/ {
   class { 'cassandra':
@@ -31,6 +32,7 @@ node /^cassandra-node[012]$/ {
       'start_native_transport'      => true,
     },
     service_ensure => 'running',
+    require  => Class['cassandra::datastax_repo', 'cassandra::java'],
   }
 }
 
@@ -66,5 +68,6 @@ node /^cassandra-node[345]$/ {
       'start_native_transport'      => true,
     },
     service_ensure => 'running',
+    require  => Class['cassandra::datastax_repo', 'cassandra::java'],
   }
 }
