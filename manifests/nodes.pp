@@ -75,7 +75,5 @@ node /^cassandra-node[345]$/ {
 }
 
 file { '/etc/security/limits.d/cassandra.conf':
-    content => "cassandra - nofile 100000
-cassandra - nproc 32768
-",
+    content => "# Managed by Puppet\n",
 }
