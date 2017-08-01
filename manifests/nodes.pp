@@ -13,7 +13,7 @@ node /^cassandra-node[012]$/ {
       'commitlog_sync_period_in_ms' => 10000,
       'data_file_directories'       => ['/var/lib/cassandra/data'],
       'endpoint_snitch'             => 'GossipingPropertyFileSnitch',
-      'hints_directory'             => '/var/lib/cassandra/hints',
+      # 'hints_directory'             => '/var/lib/cassandra/hints',
       'listen_interface'            => 'eth0',
       'num_tokens'                  => 256,
       'partitioner'                 => 'org.apache.cassandra.dht.Murmur3Partitioner',
@@ -24,7 +24,7 @@ node /^cassandra-node[012]$/ {
           'parameters' => [
             {
               # 'seeds' => '110.82.155.0,110.82.156.3',
-              'seeds' => 'cassandra-node0.lxc, cassandra-node3.lxc',
+              'seeds' => 'cassandra-node0, cassandra-node3',
             },
           ],
         },
@@ -49,7 +49,7 @@ node /^cassandra-node[345]$/ {
       'commitlog_sync_period_in_ms' => 10000,
       'data_file_directories'       => ['/var/lib/cassandra/data'],
       'endpoint_snitch'             => 'GossipingPropertyFileSnitch',
-      'hints_directory'             => '/var/lib/cassandra/hints',
+      # 'hints_directory'             => '/var/lib/cassandra/hints',
       'listen_interface'            => 'eth0',
       'num_tokens'                  => 256,
       'partitioner'                 => 'org.apache.cassandra.dht.Murmur3Partitioner',
@@ -77,6 +77,5 @@ node /^cassandra-node[345]$/ {
 file { '/etc/security/limits.d/cassandra.conf':
     content => "cassandra - nofile 100000
 cassandra - nproc 32768
-cassandra - as unlimited
 ",
 }
