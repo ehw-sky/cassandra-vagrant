@@ -1,0 +1,5 @@
+.librarian/
+modules/
+.tmp/
+*~
+*.bak
