@@ -33,6 +33,7 @@ node /^cassandra-node[012]$/ {
     },
     service_ensure => 'running',
     require  => Class['cassandra::datastax_repo', 'cassandra::java'],
+    notify => File['/etc/security/limits.d/cassandra.conf'],
   }
 }
 
@@ -69,6 +70,7 @@ node /^cassandra-node[345]$/ {
     },
     service_ensure => 'running',
     require  => Class['cassandra::datastax_repo', 'cassandra::java'],
+    notify => File['/etc/security/limits.d/cassandra.conf'],
   }
 }
 
@@ -76,5 +78,5 @@ file { '/etc/security/limits.d/cassandra.conf':
     content => "cassandra - nofile 100000
 cassandra - nproc 32768
 cassandra - as unlimited
-"
+",
 }
